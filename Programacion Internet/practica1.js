@@ -17,6 +17,13 @@ switch(args[3].toLowerCase()){
 		console.log("Resultado: "+result);
 	break;
 
+	case 'por':
+	var number1 = parseInt(args[2]);
+	var number2 = parseInt(args[4]);
+	result = number1*number2;
+	console.log("Resultado: "+result);
+	break;
+
 	case 'entre':
 		var number1 = parseInt(args[2]);
 		var number2 = parseInt(args[4]);
