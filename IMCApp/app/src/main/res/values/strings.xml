@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">IMCApp</string>
+    <string name="title">IMC Calculator</string>
+    <string name="hintpeso">Peso (kg)</string>
+    <string name="hintestatura">Estatura (mts)</string>
+    <string name="buttonText">Calcular</string>
+</resources>
