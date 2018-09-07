@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             var peso = txt_peso.text.toString()
             var estatura = txt_estatura.text.toString()
 
-            if(peso.equals("")|| estatura.equals("")){
+            if(peso.equals("") || estatura.equals("")){
                 Toast.makeText(this,"Debe ingresar todos los valores",Toast.LENGTH_SHORT).show()
             }else{
                 var pesoVal = peso.toDouble()
