@@ -16,13 +16,24 @@ class MainActivity : AppCompatActivity() {
         var etNumber = findViewById<EditText>(R.id.etNumber)
         var btnValidar = findViewById<Button>(R.id.btnValidar)
 
-        btnValidar.setOnClickListener {
-            var number =  etNumber.text.toString().toInt()
+        btnValidar.setBackgroundResource(R.drawable.smile)
 
-            if(number%2==0){
-                Toast.makeText(this,"Numero PAR",Toast.LENGTH_SHORT).show()
+        btnValidar.setOnClickListener {
+
+            var number =  etNumber.text.toString()
+
+            if(number.isEmpty()){
+                Toast.makeText(this,"Escribe un numero",Toast.LENGTH_SHORT).show()
             }else{
-                Toast.makeText(this,"Numero IMPAR",Toast.LENGTH_SHORT).show()
+                if(number.toInt() == 0){
+                    Toast.makeText(this,"Ingresa numero diferente de cero",Toast.LENGTH_SHORT).show()
+                }else{
+                    if(number.toInt()%2==0){
+                        Toast.makeText(this,"Numero PAR",Toast.LENGTH_SHORT).show()
+                    }else{
+                        Toast.makeText(this,"Numero IMPAR",Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
         }
     }
