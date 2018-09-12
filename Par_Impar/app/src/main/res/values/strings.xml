@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Par_Impar</string>
+    <string name="hint">Ingresa numero a validar</string>
+    <string name="buttonText">Validar</string>
+</resources>
