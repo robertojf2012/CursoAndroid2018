@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TimeFighter</string>
+    <string name="your_score">Tu Puntaje %s</string>
+    <string name="time_left">Tiempo Restante %s</string>
+    <string name="tap_me">Toca</string>
+    <string name="game_over_message">Se acabó el tiempo! Tu puntaje fué %s</string>
+    <string name="about_menu">Acerca de</string>
+    <string name="about_title">Time Fighter %s</string>
+    <string name="about_message">Creado por Robert</string>
+    <string name="exit_menu">Salir</string>
+</resources>

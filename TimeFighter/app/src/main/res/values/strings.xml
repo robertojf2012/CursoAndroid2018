@@ -5,6 +5,7 @@
     <string name="tap_me">Tap Me</string>
     <string name="game_over_message">Times up! Your score was: %s</string>
     <string name="about_menu">About</string>
+    <string name="exit_menu">Exit</string>
     <string name="about_title">Time Fighter %s</string>
     <string name="about_message">Created by Robert</string>
 </resources>

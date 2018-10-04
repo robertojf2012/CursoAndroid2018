@@ -1,5 +1,6 @@
 package com.example.robert.timefighter
 
+import android.media.MediaPlayer
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -27,6 +28,9 @@ class MainActivity : AppCompatActivity() {
     internal val TAG = MainActivity::class.java.simpleName
     internal var timeLeftOntimer: Long = 20000
 
+    var startMusic: MediaPlayer? = null
+    var endSound: MediaPlayer? = null
+
     companion object {
         private val SCORE_KEY = "SCORE_KEY"
         private val TIME_LEFT_KEY = "TIME_LEFT_KEY"
@@ -43,7 +47,11 @@ class MainActivity : AppCompatActivity() {
         time_left_text_view = findViewById(R.id.time_left_text_view)
         game_score_text_view.text = getString(R.string.your_score,score.toString())
 
+        startMusic = MediaPlayer.create(this, R.raw.game)
+        endSound = MediaPlayer.create(this, R.raw.endgame)
+
         if(savedInstanceState!=null){
+
             score = savedInstanceState.getInt(SCORE_KEY)
             timeLeftOntimer = savedInstanceState.getLong(TIME_LEFT_KEY)
             restoreGame()
@@ -57,9 +65,12 @@ class MainActivity : AppCompatActivity() {
             incrementScore()
         }
 
+
+
     }
 
     private fun restoreGame(){
+
         game_score_text_view.text = getString(R.string.your_score,score.toString())
         val restoredTime = timeLeftOntimer/1000
         time_left_text_view.text = getString(R.string.time_left,restoredTime.toString())
@@ -81,6 +92,7 @@ class MainActivity : AppCompatActivity() {
         countDownTimer.start()
         gameStarted = true
 
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -90,6 +102,7 @@ class MainActivity : AppCompatActivity() {
         outState.putLong(TIME_LEFT_KEY,timeLeftOntimer)
         countDownTimer.cancel()
         Log.d(TAG,"onSaveInstanceState: saving Score: $score & Time Left: $timeLeftOntimer")
+
 
     }
 
@@ -103,8 +116,16 @@ class MainActivity : AppCompatActivity() {
         if(item.itemId == R.id.action_about){
             showInfo()
         }
+        if(item.itemId == R.id.action_exit){
+            exitGame()
+        }
         return true
     }
+
+    private fun exitGame(){
+        finishAffinity()
+    }
+
 
     private fun showInfo(){
         val dialogTitle = getString(R.string.about_title,BuildConfig.VERSION_NAME)
@@ -138,6 +159,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun endGame(){
+        startMusic?.stop()
+        startMusic?.release()
+        startMusic = null
+        endSound?.start()
+
         Toast.makeText(this,getString(R.string.game_over_message,score.toString()),Toast.LENGTH_LONG).show()
         resetGame()
     }
@@ -145,6 +171,11 @@ class MainActivity : AppCompatActivity() {
     private fun startGame(){
         countDownTimer.start()
         gameStarted = true
+
+        if(startMusic == null){
+            startMusic = MediaPlayer.create(this, R.raw.game)
+        }
+        startMusic?.start()
     }
 
     private fun incrementScore() {
@@ -155,6 +186,8 @@ class MainActivity : AppCompatActivity() {
         val newScore = getString(R.string.your_score,score.toString())
         game_score_text_view.text = newScore
     }
+
+
 
 
 }
