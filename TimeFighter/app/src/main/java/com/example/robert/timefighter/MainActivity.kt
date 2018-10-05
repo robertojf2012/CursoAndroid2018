@@ -4,6 +4,7 @@ import android.media.MediaPlayer
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
 import android.os.PersistableBundle
 import android.support.v7.app.AlertDialog
 import android.util.Log
@@ -23,13 +24,15 @@ class MainActivity : AppCompatActivity() {
     internal var score = 0
     internal var gameStarted = false
     internal lateinit var countDownTimer: CountDownTimer
-    internal val initialCountDown: Long = 20000
+    internal val initialCountDown: Long = 5000
     internal val countDownInterval: Long = 1000
     internal val TAG = MainActivity::class.java.simpleName
-    internal var timeLeftOntimer: Long = 20000
+    internal var timeLeftOntimer: Long = 5000
 
     var startMusic: MediaPlayer? = null
     var endSound: MediaPlayer? = null
+
+    private var handler: Handler = Handler()
 
     companion object {
         private val SCORE_KEY = "SCORE_KEY"
@@ -47,14 +50,14 @@ class MainActivity : AppCompatActivity() {
         time_left_text_view = findViewById(R.id.time_left_text_view)
         game_score_text_view.text = getString(R.string.your_score,score.toString())
 
-        startMusic = MediaPlayer.create(this, R.raw.game)
-        endSound = MediaPlayer.create(this, R.raw.endgame)
 
         if(savedInstanceState!=null){
-
             score = savedInstanceState.getInt(SCORE_KEY)
             timeLeftOntimer = savedInstanceState.getLong(TIME_LEFT_KEY)
             restoreGame()
+
+            startMusic = MediaPlayer.create(this, R.raw.game)
+            startMusic?.start()
         }else{
             resetGame()
         }
@@ -98,11 +101,12 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
+        startMusic?.stop()
+
         outState.putInt(SCORE_KEY,score)
         outState.putLong(TIME_LEFT_KEY,timeLeftOntimer)
         countDownTimer.cancel()
         Log.d(TAG,"onSaveInstanceState: saving Score: $score & Time Left: $timeLeftOntimer")
-
 
     }
 
@@ -162,6 +166,8 @@ class MainActivity : AppCompatActivity() {
         startMusic?.stop()
         startMusic?.release()
         startMusic = null
+
+        endSound = MediaPlayer.create(this, R.raw.endgame)
         endSound?.start()
 
         Toast.makeText(this,getString(R.string.game_over_message,score.toString()),Toast.LENGTH_LONG).show()
@@ -172,14 +178,13 @@ class MainActivity : AppCompatActivity() {
         countDownTimer.start()
         gameStarted = true
 
-        if(startMusic == null){
-            startMusic = MediaPlayer.create(this, R.raw.game)
-        }
+        startMusic = MediaPlayer.create(this, R.raw.game)
         startMusic?.start()
     }
 
     private fun incrementScore() {
         if(!gameStarted){
+
             startGame()
         }
         score = score + 1
