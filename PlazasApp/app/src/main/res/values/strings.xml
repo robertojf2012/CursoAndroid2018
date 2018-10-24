@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Plazas Comerciales CUU</string>
+    <string name="nuevaPlaza">Nueva Plaza</string>
+    <string name="plazaName">Plaza:</string>
+    <string name="telefono">Telefono:</string>
+    <string name="mapa">Mapa</string>
+    <string name="nuevaPlazaTitle">Registrar Nueva Plaza</string>
+    <string name="nombrePlaza">Nombre</string>
+    <string name="descripcionPlaza">Descripcion</string>
+    <string name="urlImagenPlaza">URL Imagen</string>
+    <string name="telefonoPlaza">Telefono</string>
+    <string name="latitudPlaza">Latitud</string>
+    <string name="longitudPlaza">Longitud</string>
+    <string name="ButtonRegistrar">Registrar</string>
+
+    <string name="scan_qr_code">Scan QR Code</string>
+</resources>
