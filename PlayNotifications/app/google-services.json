@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1093588613593",
+    "firebase_url": "https://playnotifications-1fb38.firebaseio.com",
+    "project_id": "playnotifications-1fb38",
+    "storage_bucket": "playnotifications-1fb38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093588613593:android:ea3ed30259828222",
+        "android_client_info": {
+          "package_name": "com.example.robert.playnotifications"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1093588613593-jej3rekie0icts2jfp7spmeela991vd2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.robert.playnotifications",
+            "certificate_hash": "6a51671df5a2c8c74d891fc720c0340a83489fae"
+          }
+        },
+        {
+          "client_id": "1093588613593-o6uraik5hotpgq47oldr3qndkpbdee32.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrFNhY6xwoS6emWbCrTB_GKU2D36oMBsM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1093588613593-o6uraik5hotpgq47oldr3qndkpbdee32.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
