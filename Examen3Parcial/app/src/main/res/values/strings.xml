@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Examen3Parcial</string>
+    <string name="loginText">Login</string>
+    <string name="hintMail">Email</string>
+    <string name="hintPassword">Password</string>
+    <string name="iniciarText">Iniciar</string>
+    <string name="registrarText">Registrar</string>
+</resources>
